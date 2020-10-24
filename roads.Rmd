@@ -1,0 +1,26 @@
+---
+title: "roads"
+output: html_document
+---
+
+#load the package
+```{r}
+# install.packages("tigris")
+library("tigris")
+#install.packages("sf")
+library("sf")
+```
+
+#Download and plot a roads shapefile into R 
+```{r}
+state<-"NY" #The two-digit FIPS code of the state.
+county<-027 #The three-digit FIPS code of the county.
+year<-2016 #the data year 
+NY_Dutchess_2016_roads<-roads(state, county, year =year)
+plot(NY_Dutchess_2016_roads)
+```
+
+#Write the features object to a shapefile 
+```{r}
+st_write(NY_Dutchess_2016_roads, "NY_Dutchess_2016_roads.shp")
+```
